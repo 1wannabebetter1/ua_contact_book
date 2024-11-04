@@ -65,7 +65,7 @@ contact
 ```
 # Processing parsed data
 After parsing data converts into JSON format. Here is part of current test result
-``` json
+```
 [
         {
                 "full_name": Мар'яна ЄҐЇ,
