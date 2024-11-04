@@ -1,0 +1,12 @@
+[package]
+name = "ua_contact_book"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Parser, which take file filled with lines of contact and converts it into JSON format"
+
+
+[dependencies]
+anyhow = "1.0.92"
+pest = "2.7.14"
+pest_derive = "2.7.14"
