@@ -5,4 +5,4 @@ number = {("+38")? ~ "0"~ ASCII_NONZERO_DIGIT ~ ASCII_DIGIT{8}}
 numbers = {number ~ (" "* ~","~ " "* ~ number)*}
 email = {(ASCII_ALPHA|"."|ASCII_DIGIT){1, 64} ~ "@" ~ (ASCII_ALPHA|"."|ASCII_DIGIT){5, 189}}
 contact = {name ~ " "* ~";"~ " "* ~city~ " "* ~";"~ " "* ~birth_date ~ " "* ~";"~ " "* ~numbers ~ " "* ~";"~ " "* ~ email}
-file = { SOI ~ (contact ~ NEWLINE{1,})* ~ EOI }
+file = { SOI ~ (contact ~ NEWLINE*)* ~ EOI }
