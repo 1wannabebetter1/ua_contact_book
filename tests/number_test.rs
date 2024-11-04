@@ -3,7 +3,7 @@ use anyhow::anyhow;
 use ua_contact_book::*;
 
 #[cfg(test)]
-mod tests{
+mod number_test{
     use super::*;
     #[test]
     fn number_creation_test()-> anyhow::Result<()> {
