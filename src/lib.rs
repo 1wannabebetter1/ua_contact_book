@@ -23,14 +23,11 @@ pub fn generate_contact() -> anyhow::Result<Vec<String>> {
         .ok_or_else(|| anyhow!("No pair"))?;
     let mut contacts: Vec<String> = Vec::new();
     for pair in pairs.into_inner() {
-        match pair.as_rule() {
-            Rule::contact => {
-                contacts.push(pair.as_str().trim().to_string());
-            }
-            _ => {}
+        if pair.as_rule() == Rule::contact {
+            contacts.push(pair.as_str().trim().to_string());
         }
     }
-    return Ok(contacts);
+    Ok(contacts)
 }
 
 pub fn contact_to_record(user_contact: &str) -> anyhow::Result<Record> {
@@ -57,13 +54,13 @@ pub fn contact_to_record(user_contact: &str) -> anyhow::Result<Record> {
             _ => {}
         }
     }
-    return Ok(Record {
+    Ok(Record {
         name,
         city,
         birth_date,
         phone_numbers,
         email,
-    });
+    })
 }
 
 pub fn generate_json(contacts: Vec<Record>) -> anyhow::Result<String> {
