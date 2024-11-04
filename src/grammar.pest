@@ -1,5 +1,5 @@
-name = {(CYRILLIC|"."|" "|"'")*}
-city = {(CYRILLIC|"."|" "|"'")*~","~ " "*~ASCII_DIGIT{5}}
+name = {(CYRILLIC|"."|" "|"'"){1,}}
+city = {((CYRILLIC|"."|"'"){1,}~" "*)*~","~ " "*~ASCII_DIGIT{5}}
 birth_date = {ASCII_DIGIT{2} ~ (("." ~  ASCII_DIGIT{2} ~ ".")|("/" ~  ASCII_DIGIT{2} ~ "/")) ~ (ASCII_DIGIT{4})}
 number = {("+38")? ~ "0"~ ASCII_NONZERO_DIGIT ~ ASCII_DIGIT{8}}
 numbers = {number ~ (" "* ~","~ " "* ~ number)*}
