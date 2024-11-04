@@ -20,16 +20,14 @@ mod name_test{
     }
 
     #[test]
-    fn no_value_name()-> anyhow::Result<()> {
+    fn no_value_name() {
         let pair =  Grammar::parse(Rule::name, "");
         assert!(pair.is_err());
-        Ok(())
     }
 
     #[test]
-    fn wrong_format_name()-> anyhow::Result<()> {
+    fn wrong_format_name() {
         let pair =  Grammar::parse(Rule::name, ",Іван");
         assert!(pair.is_err());
-        Ok(())
     }
 }

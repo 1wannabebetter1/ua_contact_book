@@ -29,16 +29,14 @@ mod numbers_test{
     }
 
     #[test]
-    fn no_value_with_coma()-> anyhow::Result<()> {
+    fn no_value_with_coma() {
         let pair =  Grammar::parse(Rule::numbers, ",");
         assert!(pair.is_err());
-        Ok(())
     }
 
     #[test]
-    fn wrong_number()-> anyhow::Result<()> {
+    fn wrong_number(){
         let pair =  Grammar::parse(Rule::numbers, "380904643439");
         assert!(pair.is_err());
-        Ok(())
     }
 }
