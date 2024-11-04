@@ -68,30 +68,30 @@ After parsing data converts into JSON format. Here is part of current test resul
 ```
 [
         {
-                "full_name": Мар'яна ЄҐЇ,
-                "city": Бровари, 07400,
-                "birth_date": 06/06/2006,
+                "full_name": "Мар'яна ЄҐЇ",
+                "city": "Бровари, 07400",
+                "birth_date": "06/06/2006",
                 "contacts": {
                         "phone_numbers": ["+380904652439", "0904652439"],
-                        "email": user@exam.pl
+                        "email": "user@exam.pl"
                 }
         },
         {
-                "full_name": Олексій Ігорович,
-                "city": Львів, 79000,
-                "birth_date": 12/04/1985,
+                "full_name": "Олексій Ігорович",
+                "city": "Львів, 79000",
+                "birth_date": "12/04/1985",
                 "contacts": {
                         "phone_numbers": ["+380961234567", "0951234567"],
-                        "email": oleksii@example.com
+                        "email": "oleksii@example.com"
                 }
         },
         {
-                "full_name": Катерина Михайлівна,
-                "city": Ужгород, 88000,
-                "birth_date": 05/05/1991,
+                "full_name": "Катерина Михайлівна",
+                "city": "Ужгород, 88000",
+                "birth_date": "05/05/1991",
                 "contacts": {
                         "phone_numbers": ["+380939876543"],
-                        "email": kateryna@example.com
+                        "email": "kateryna@example.com"
                 }
         }
 ]

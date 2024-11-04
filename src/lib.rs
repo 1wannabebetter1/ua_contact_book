@@ -78,12 +78,12 @@ pub fn generate_json(contacts: Vec<Record>)-> anyhow::Result<String, >{
 pub fn generate_single_record(contact: &Record)-> anyhow::Result<String, >{
     let formatted_contact = format!(
         "\t{{\n\
-         \t\t\"full_name\": {},\n\
-         \t\t\"city\": {},\n\
-         \t\t\"birth_date\": {},\n\
+         \t\t\"full_name\": \"{}\",\n\
+         \t\t\"city\": \"{}\",\n\
+         \t\t\"birth_date\": \"{}\",\n\
          \t\t\"contacts\": {{\n\
          \t\t\t\"phone_numbers\": {:?},\n\
-         \t\t\t\"email\": {}\n\
+         \t\t\t\"email\": \"{}\"\n\
          \t\t}}\n\
          \t}}",
         contact.name,
