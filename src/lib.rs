@@ -16,7 +16,7 @@ pub struct Record {
     email: String,
 }
 
-pub fn parse(path: &str)-> anyhow::Result<String>{
+pub fn parse(path: &str) -> anyhow::Result<String> {
     let unparsed_file = fs::read_to_string(path).expect("cannot read file");
     let contacts: Vec<String> = generate_contact(&unparsed_file)?;
     let mut records: Vec<Record> = Vec::new();
