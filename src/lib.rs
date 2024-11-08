@@ -16,9 +16,21 @@ pub struct Record {
     email: String,
 }
 
-pub fn generate_contact() -> anyhow::Result<Vec<String>> {
-    let unparsed_file = fs::read_to_string("test.txt").expect("cannot read file");
-    let pairs = Grammar::parse(Rule::file, &unparsed_file)?
+pub fn parse(path: &str)-> anyhow::Result<String>{
+    let unparsed_file = fs::read_to_string(path).expect("cannot read file");
+    let contacts: Vec<String> = generate_contact(&unparsed_file)?;
+    let mut records: Vec<Record> = Vec::new();
+    for contact in contacts.iter() {
+        let rec: Record = contact_to_record(contact)?;
+        records.push(rec);
+    }
+    let result: String = generate_json(records)?;
+    println!("{}", result);
+    Ok(result)
+}
+
+pub fn generate_contact(unparsed_file: &str) -> anyhow::Result<Vec<String>> {
+    let pairs = Grammar::parse(Rule::file, unparsed_file)?
         .next()
         .ok_or_else(|| anyhow!("No pair"))?;
     let mut contacts: Vec<String> = Vec::new();
