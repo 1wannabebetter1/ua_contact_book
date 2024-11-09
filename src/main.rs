@@ -5,7 +5,7 @@ fn help() {
     println!("Commands:");
     println!("  help       Show help information");
     println!("  credits    Show credits");
-    println!("  <path>     Parse file with required structure to json form");
+    println!("  <path>     Parse file with required structure to json form. You can use test.txt for example");
 }
 
 fn credits() {
