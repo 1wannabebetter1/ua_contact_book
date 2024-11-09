@@ -3,10 +3,10 @@
 /// 
 /// This rule used to parse full_name properly: as soon, as this project oriented for ukrainian audience full_name contains Cyrillic letters, gaps and dot("Роберт Дауні мол.")
 ///
-/// # Examples
+/// # For example
 ///```
-///Роберт Дауні мол.
-///Іван Іванеко
+/// //Роберт Дауні мол.
+/// //Іван Іванеко
 ///```
 name = {(CYRILLIC|"."|" "|"'")+}
 
@@ -14,24 +14,24 @@ name = {(CYRILLIC|"."|" "|"'")+}
 /// This rule designed to parse contact's city: 
 /// in this program city have name part(Cyrillic letters and gaps) and zip-code part(5-digit number) divided with coma and gaps
 ///
-/// # Examples
+/// # For example
 /// ```
-/// Київ, 00001
-/// Бровари, 07400
+/// //Київ, 00001
+/// //Бровари, 07400
 /// ```
 city = {((CYRILLIC|"."|"'")+~" "*)*~","~ " "*~ASCII_DIGIT{5}}
 
 /// 
 /// This rule was writen to parse birthdate with next structure:
 /// ```
-/// dd.mm.yyyy
-/// dd/mm/yyyy
+/// //dd.mm.yyyy
+/// //dd/mm/yyyy
 /// ```
 /// 
-/// # Examples
+/// # For example
 /// ```
-/// 09.11.2024
-/// 09/11/2024
+/// //09.11.2024
+/// //09/11/2024
 /// ```
 birth_date = {ASCII_DIGIT{2} ~ (("." ~  ASCII_DIGIT{2} ~ ".")|("/" ~  ASCII_DIGIT{2} ~ "/")) ~ (ASCII_DIGIT{4})}
 
@@ -39,14 +39,14 @@ birth_date = {ASCII_DIGIT{2} ~ (("." ~  ASCII_DIGIT{2} ~ ".")|("/" ~  ASCII_DIGI
 /// Rule for parsing single ukrainian phone number. 
 /// Each ukrainian number starts with 0 or +380, then non-zero digit and 8 digits after. 
 /// ```
-/// 0xxxxxxxxx
-/// +380xxxxxxxxx
+/// //0xxxxxxxxx
+/// //+380xxxxxxxxx
 /// ```
 /// 
-/// # Examples
+/// # For example
 /// ```
-/// 0412345678
-/// +380412345678
+/// //0412345678
+/// //+380412345678
 /// ```
 number = {("+38")? ~ "0"~ ASCII_NONZERO_DIGIT ~ ASCII_DIGIT{8}}
 
@@ -54,43 +54,43 @@ number = {("+38")? ~ "0"~ ASCII_NONZERO_DIGIT ~ ASCII_DIGIT{8}}
 /// Rule for parsing multiple ukrainian phone number. 
 /// As long as person can own more than 1 phone number, phone numbers can be written with coma separation and gaps
 /// ```
-/// 0xxxxxxxxx, +380xxxxxxxxx,+380xxxxxxxxx ,  +380xxxxxxxxx
+/// //0xxxxxxxxx, +380xxxxxxxxx,+380xxxxxxxxx ,  +380xxxxxxxxx
 /// ```
 /// 
-/// # Examples
+/// # For example
 /// ```
-/// 0412345678, +380412345678,+380412345670, +380412345679
-/// +380412345678
+/// //0412345678, +380412345678,+380412345670, +380412345679
+/// //+380412345678
 /// ```
 numbers = {number ~ (" "* ~","~ " "* ~ number)*}
 
 /// 
 /// Rule for parsing email. According to standard, max email length - 254 symbols, where part before "@" up to 64 symbols, that can be ASCII_DIGIT, ASCII_ALPHA or dot.
 /// After "@" length can be from 5 symbols up to 189, that can be ASCII_DIGIT, ASCII_ALPHA or dot.
-/// # Example
+/// # For example
 /// ```
-/// user.123@examp.le
+/// //user.123@examp.le
 /// ```
 email = {(ASCII_ALPHA|"."|ASCII_DIGIT){1, 64} ~ "@" ~ (ASCII_ALPHA|"."|ASCII_DIGIT){5, 189}}
 
 /// 
 /// Rule that contain previous rules and combines it into one.
 /// ```
-/// name; city; date; numbers; email
+/// //name; city; date; numbers; email
 /// ```
 /// 
-/// # Examples
+/// # For example
 /// ```
-/// Олексій Ігорович; Львів, 79000; 12/04/1985; +380412345670, 0412345678; oleksii@example.com
+/// //Олексій Ігорович; Львів, 79000; 12/04/1985; +380412345670, 0412345678; oleksii@example.com
 /// ```
 contact = {name ~ " "* ~";"~ " "* ~city~ " "* ~";"~ " "* ~birth_date ~ " "* ~";"~ " "* ~numbers ~ " "* ~";"~ " "* ~ email}
 
 /// 
 /// Rule that parse multiple contacts in file separated with NEWLINE
 /// ```
-/// contact
-/// contact
-/// ...
-/// contact
+/// //contact
+/// //contact
+/// //...
+/// //contact
 /// ```
 file = { SOI ~ (contact ~ NEWLINE*)* ~ EOI }
