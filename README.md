@@ -1,5 +1,3 @@
-# PREVIEW VERSION
-
 # ua_contact_book
 
 Parser written with Rust and pest create to convert contact data to json format
