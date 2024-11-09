@@ -1,5 +1,8 @@
 # ua_contact_book
 
+Crates: https://crates.io/crates/ua_contact_book
+Docs: https://docs.rs/ua_contact_book/latest/ua_contact_book/ (rules description in Enum Rule)
+
 Parser written with Rust and pest create to convert contact data to json format
 
 ## Parsing data
